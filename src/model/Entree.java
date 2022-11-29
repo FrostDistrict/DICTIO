@@ -26,4 +26,8 @@ public class Entree {
     public void setDefinition(String definition) {
         this.definition = definition;
     }
+
+    public String toString() {
+        return mot + " & " + definition;
+    }
 }
