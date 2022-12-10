@@ -1,18 +1,22 @@
 package swing;
 
 import model.Entree;
+import model.LexiNode;
 import service.ReadWriteService;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Window {
 
     private ReadWriteService readWriteService;
 
-    private List<Entree> wordList;
+    private List<LexiNode> nodeList;
 
     private JFrame windowFrame;
 
@@ -34,7 +38,7 @@ public class Window {
 
     public Window(ReadWriteService readWriteService) {
         this.readWriteService = readWriteService;
-        this.wordList = new ArrayList<>();
+        this.nodeList = new ArrayList<>();
         initGUI();
     }
 
@@ -63,9 +67,13 @@ public class Window {
         suggestedWordsList.setBounds(0, 85, 300, 140);
 
         allWordsList = new JList<>();
-        allWordsList.setBounds(610, 40, 160, 185);
+        JScrollPane scrollPane = new JScrollPane(allWordsList);
+        scrollPane.setBounds(610, 40, 160, 185);
 
-        jFileChooser = new JFileChooser();
+        String userDirectory = new File("").getAbsolutePath();
+        jFileChooser = new JFileChooser(userDirectory);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Fichier text", "txt");
+        jFileChooser.setFileFilter(filter);
 
         windowFrame.add(addBtn);
         windowFrame.add(loadBtn);
@@ -73,7 +81,7 @@ public class Window {
         windowFrame.add(wordField);
         windowFrame.add(descField);
         windowFrame.add(suggestedWordsList);
-        windowFrame.add(allWordsList);
+        windowFrame.add(scrollPane);
 
         windowFrame.setSize(800, 300);
         windowFrame.setLayout(null);
@@ -89,7 +97,7 @@ public class Window {
         int option = jFileChooser.showOpenDialog(windowFrame);
         if (option == JFileChooser.APPROVE_OPTION) {
             try {
-                wordList = readWriteService.readFromFile(jFileChooser.getSelectedFile());
+                nodeList = readWriteService.readFromFile(jFileChooser.getSelectedFile());
                 updateAllWordsList();
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(windowFrame, "Impossible de charger ce fichier!");
@@ -101,8 +109,9 @@ public class Window {
     }
 
     private void updateAllWordsList() {
-        String[] words = wordList.stream().map(Entree::getMot).toArray(String[]::new);
-        System.out.println(words[0]);
+        String[] words = nodeList.stream()
+                .flatMap(node -> node.getAllWords().stream())
+                .toArray(String[]::new);
         allWordsList.setListData(words);
     }
 }
