@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a44c1345-1a4e-4bb3-8aff-bda3fc3624fa" name="Changes" comment="charger un fichier">
-      <change afterPath="$PROJECT_DIR$/src/exception/WordAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/LexiNode.java" afterDir="false" />
+    <list default="true" id="a44c1345-1a4e-4bb3-8aff-bda3fc3624fa" name="Changes" comment="LexiNode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/ReadWriteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ReadWriteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/LexiNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/LexiNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670701400271</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="LexiNode">
+      <created>1670712942733</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670712942733</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,19 +141,20 @@
     <MESSAGE value="init" />
     <MESSAGE value="refactor" />
     <MESSAGE value="charger un fichier" />
-    <option name="LAST_COMMIT_MESSAGE" value="charger un fichier" />
+    <MESSAGE value="LexiNode" />
+    <option name="LAST_COMMIT_MESSAGE" value="LexiNode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/service/ReadWriteService.java</url>
-          <line>25</line>
-          <properties class="service.ReadWriteService" method="readFromFile">
+          <url>file://$PROJECT_DIR$/src/swing/Window.java</url>
+          <line>110</line>
+          <properties class="swing.Window" method="updateAllWordsList">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

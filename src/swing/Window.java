@@ -109,9 +109,10 @@ public class Window {
     }
 
     private void updateAllWordsList() {
-        String[] words = nodeList.stream()
-                .flatMap(node -> node.getAllWords().stream())
-                .toArray(String[]::new);
-        allWordsList.setListData(words);
+        List<String> allWords = new ArrayList<>();
+        for (LexiNode node: nodeList) {
+            allWords.addAll(node.getAllWords());
+        }
+        allWordsList.setListData(allWords.toArray(String[]::new));
     }
 }

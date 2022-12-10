@@ -62,6 +62,11 @@ public class LexiNode {
 
     public List<String> getAllWords() {
         List<String> allWords = new ArrayList<>();
+
+        if (definition != null) {
+            allWords.add(word);
+        }
+
         for (LexiNode node: childNodes) {
             allWords.addAll(node.getAllWords());
         }
