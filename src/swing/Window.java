@@ -1,12 +1,18 @@
 package swing;
 
+import model.Entree;
 import service.ReadWriteService;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Window {
 
     private ReadWriteService readWriteService;
+
+    private List<Entree> wordList;
 
     private JFrame windowFrame;
 
@@ -24,8 +30,11 @@ public class Window {
 
     private JList<String> allWordsList;
 
+    private JFileChooser jFileChooser;
+
     public Window(ReadWriteService readWriteService) {
         this.readWriteService = readWriteService;
+        this.wordList = new ArrayList<>();
         initGUI();
     }
 
@@ -56,6 +65,8 @@ public class Window {
         allWordsList = new JList<>();
         allWordsList.setBounds(610, 40, 160, 185);
 
+        jFileChooser = new JFileChooser();
+
         windowFrame.add(addBtn);
         windowFrame.add(loadBtn);
         windowFrame.add(saveBtn);
@@ -73,8 +84,25 @@ public class Window {
     }
 
     private void onLoadBtnClicked() {
+        System.out.println("Load button clicked");
+
+        int option = jFileChooser.showOpenDialog(windowFrame);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            try {
+                wordList = readWriteService.readFromFile(jFileChooser.getSelectedFile());
+                updateAllWordsList();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(windowFrame, "Impossible de charger ce fichier!");
+            }
+        }
     }
 
     private void onSaveBtnClicked() {
+    }
+
+    private void updateAllWordsList() {
+        String[] words = wordList.stream().map(Entree::getMot).toArray(String[]::new);
+        System.out.println(words[0]);
+        allWordsList.setListData(words);
     }
 }

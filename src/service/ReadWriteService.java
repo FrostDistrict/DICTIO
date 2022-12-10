@@ -20,8 +20,8 @@ public class ReadWriteService {
         fileWriter.close();
     }
 
-    public List<Entree> readFromFile(String filePath) throws IOException {
-        FileReader fileReader = new FileReader(filePath);
+    public List<Entree> readFromFile(File file) throws IOException {
+        FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         List<Entree> entrees = bufferedReader.lines().map(line -> {
