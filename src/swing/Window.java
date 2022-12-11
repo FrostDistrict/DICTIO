@@ -5,10 +5,14 @@ import model.LexiNode;
 import service.ReadWriteService;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,6 +21,8 @@ public class Window {
     private ReadWriteService readWriteService;
 
     private List<LexiNode> nodeList;
+
+    private LexiNode currentNode;
 
     private JFrame windowFrame;
 
@@ -60,6 +66,29 @@ public class Window {
         wordField = new JTextField();
         wordField.setBounds(0, 40, 300, 40);
 
+        wordField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                onWordFieldUpdate();
+                updateSuggestedWordsField();
+                updateDescriptionArea();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                onWordFieldUpdate();
+                updateSuggestedWordsField();
+                updateDescriptionArea();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                onWordFieldUpdate();
+                updateSuggestedWordsField();
+                updateDescriptionArea();
+            }
+        });
+
         descField = new JTextArea();
         descField.setBounds(305, 40, 300, 185);
 
@@ -88,12 +117,26 @@ public class Window {
         windowFrame.setVisible(true);
     }
 
+    private void onWordFieldUpdate() {
+        String currentWord = wordField.getText();
+
+        if (!currentWord.equals("")){
+            for (LexiNode node: nodeList) {
+                if (node.getWord().charAt(0) == currentWord.charAt(0)){
+                    currentNode = node.getNodeByWord(currentWord);
+                    System.out.println(currentNode);
+                    return;
+                }
+            }
+        }
+
+        currentNode = null;
+    }
+
     private void onAddBtnClicked() {
     }
 
     private void onLoadBtnClicked() {
-        System.out.println("Load button clicked");
-
         int option = jFileChooser.showOpenDialog(windowFrame);
         if (option == JFileChooser.APPROVE_OPTION) {
             try {
@@ -106,6 +149,22 @@ public class Window {
     }
 
     private void onSaveBtnClicked() {
+    }
+
+    private void updateDescriptionArea() {
+        if (currentNode != null && currentNode.getDefinition() != null) {
+            descField.setText(currentNode.getDefinition());
+        }else {
+            descField.setText("");
+        }
+    }
+
+    private void updateSuggestedWordsField() {
+        if (currentNode != null) {
+            suggestedWordsList.setListData(currentNode.getAllWords().toArray(new String[0]));
+        }else {
+            suggestedWordsList.setListData(new String[0]);
+        }
     }
 
     private void updateAllWordsList() {

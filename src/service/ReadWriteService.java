@@ -33,11 +33,11 @@ public class ReadWriteService {
             String[] entry = line.split("&");
             entry[0] = entry[0].replace("\uFEFF", "");
 
-            LexiNode nodeToAdd = new LexiNode(entry[0], entry[1]);
+            LexiNode nodeToAdd = new LexiNode(entry[0].replace(" ", ""), entry[1]);
             boolean entryAdded = false;
 
             for (LexiNode currentNode: lexiNodes) {
-                if (entry[0].charAt(0) == currentNode.getWord().charAt(0)){
+                if (nodeToAdd.getWord().charAt(0) == currentNode.getWord().charAt(0)){
                     try {
                         currentNode.addNode(nodeToAdd);
                     } catch (WordAlreadyExistsException ignored) { }
@@ -47,7 +47,7 @@ public class ReadWriteService {
             }
 
             if (!entryAdded) {
-                LexiNode initialNode = new LexiNode(entry[0].substring(0, 1));
+                LexiNode initialNode = new LexiNode(nodeToAdd.getWord().substring(0, 1));
                 try {
                     initialNode.addNode(nodeToAdd);
                 } catch (WordAlreadyExistsException ignored) { }

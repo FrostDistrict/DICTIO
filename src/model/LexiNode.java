@@ -52,7 +52,7 @@ public class LexiNode {
             }
         }
 
-        if (nextChar == node.getDefiningLetter()){
+        if (node.getWord().length() == word.length() + 1){
             childNodes.add(node);
         }else {
             childNodes.add(new LexiNode(word + nextChar));
@@ -71,6 +71,21 @@ public class LexiNode {
             allWords.addAll(node.getAllWords());
         }
         return allWords;
+    }
+
+    public LexiNode getNodeByWord(String word) {
+        if (this.word.equals(word)) {
+            return this;
+        }
+
+        char nextChar = word.charAt(this.word.length());
+        for (LexiNode childNode: childNodes) {
+            if (childNode.getDefiningLetter() == nextChar) {
+                return childNode.getNodeByWord(word);
+            }
+        }
+
+        return null;
     }
 
     public char getDefiningLetter() {
