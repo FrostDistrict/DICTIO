@@ -1,7 +1,6 @@
 package service;
 
 import exception.WordAlreadyExistsException;
-import model.Entree;
 import model.LexiNode;
 
 import java.io.*;

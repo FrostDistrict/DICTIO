@@ -1,7 +1,6 @@
 package swing;
 
 import exception.WordAlreadyExistsException;
-import model.Entree;
 import model.LexiNode;
 import service.ReadWriteService;
 
@@ -10,11 +9,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class Window {
@@ -92,6 +87,8 @@ public class Window {
 
         descField = new JTextArea();
         descField.setBounds(305, 40, 300, 185);
+        descField.setLineWrap(true);
+        descField.setWrapStyleWord(true);
 
         suggestedWordsList = new JList<>();
         suggestedWordsList.setBounds(0, 85, 300, 140);

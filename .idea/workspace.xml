@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a44c1345-1a4e-4bb3-8aff-bda3fc3624fa" name="Changes" comment="display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Entree.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/LexiNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/LexiNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/ReadWriteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ReadWriteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/swing/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Window.java" afterDir="false" />
@@ -135,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670722570450</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="display">
+      <created>1670725611002</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670725611002</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

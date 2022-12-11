@@ -5,7 +5,12 @@ import exception.WordAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *
+ * Représente un noeud dans l'arbre lexicographique.
+ * Responsable d'appeler les fonctions récursive de ses enfants.
+ *
+ */
 public class LexiNode {
 
     private final char definingLetter;
@@ -16,6 +21,10 @@ public class LexiNode {
 
     private List<LexiNode> childNodes;
 
+    /**
+     * Constructeur de classe qui prend seulement un mot comme attribut.
+     * @param word mot avec lequel la class est instancié. Ne doit pas être null
+     */
     public LexiNode(String word) {
         this.childNodes = new ArrayList<>();
         this.word = word;
@@ -27,6 +36,11 @@ public class LexiNode {
         }
     }
 
+    /**
+     * Constructeur de classe qui prend un mot et une définition.
+     * @param word mot avec lequel la class est instancié.
+     * @param definition definition du mot
+     */
     public LexiNode(String word, String definition) {
         this.childNodes = new ArrayList<>();
         this.word = word;
