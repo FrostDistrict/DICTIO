@@ -1,5 +1,6 @@
 package swing;
 
+import exception.WordAlreadyExistsException;
 import model.Entree;
 import model.LexiNode;
 import service.ReadWriteService;
@@ -124,7 +125,6 @@ public class Window {
             for (LexiNode node: nodeList) {
                 if (node.getWord().charAt(0) == currentWord.charAt(0)){
                     currentNode = node.getNodeByWord(currentWord);
-                    System.out.println(currentNode);
                     return;
                 }
             }
@@ -134,6 +134,38 @@ public class Window {
     }
 
     private void onAddBtnClicked() {
+        String currentWord = wordField.getText();
+
+        if (currentNode == null) {
+            LexiNode nodeToAdd = new LexiNode(wordField.getText(), descField.getText());
+            boolean entryAdded = false;
+            for (LexiNode node: nodeList) {
+                if (nodeToAdd.getWord().charAt(0) == node.getWord().charAt(0)){
+                    try {
+                        node.addNode(nodeToAdd);
+                    } catch (WordAlreadyExistsException e) {
+                        JOptionPane.showMessageDialog(windowFrame, e.getMessage());
+                    }
+                    entryAdded = true;
+                    break;
+                }
+            }
+
+            if (!entryAdded) {
+                LexiNode initialNode = new LexiNode(nodeToAdd.getWord().substring(0, 1));
+                try {
+                    initialNode.addNode(nodeToAdd);
+                } catch (WordAlreadyExistsException ignored) { }
+                nodeList.add(initialNode);
+            }
+
+            updateAllWordsList();
+            return;
+        }
+
+        if (currentWord.equals(currentNode.getWord())) {
+            currentNode.setDefinition(descField.getText());
+        }
     }
 
     private void onLoadBtnClicked() {
@@ -142,13 +174,21 @@ public class Window {
             try {
                 nodeList = readWriteService.readFromFile(jFileChooser.getSelectedFile());
                 updateAllWordsList();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(windowFrame, "Impossible de charger ce fichier!");
             }
         }
     }
 
     private void onSaveBtnClicked() {
+        int option = jFileChooser.showSaveDialog(windowFrame);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            try {
+                readWriteService.writeToFile(jFileChooser.getSelectedFile(), nodeList);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(windowFrame, "Impossible de sauvegarder ce fichier!");
+            }
+        }
     }
 
     private void updateDescriptionArea() {

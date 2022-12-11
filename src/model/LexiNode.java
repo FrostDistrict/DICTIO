@@ -60,6 +60,20 @@ public class LexiNode {
         }
     }
 
+    public List<LexiNode> getAllNodes() {
+        List<LexiNode> nodes = new ArrayList<>();
+
+        if (definition != null) {
+            nodes.add(this);
+        }
+
+        for (LexiNode node: childNodes) {
+            nodes.addAll(node.getAllNodes());
+        }
+
+        return nodes;
+    }
+
     public List<String> getAllWords() {
         List<String> allWords = new ArrayList<>();
 
@@ -98,6 +112,10 @@ public class LexiNode {
 
     public String getDefinition() {
         return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
     }
 
     public List<LexiNode> getChildNodes() {

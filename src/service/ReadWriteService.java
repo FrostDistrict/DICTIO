@@ -10,12 +10,21 @@ import java.util.List;
 
 public class ReadWriteService {
 
-    public void writeToFile(String filePath, List<Entree> entreeList) throws IOException {
-        FileWriter fileWriter = new FileWriter(filePath);
+    public void writeToFile(File file, List<LexiNode> nodeList) throws IOException {
+        if (!file.getName().contains(".txt")){
+            file = new File(file.getParent(), file.getName() + ".txt");
+        }
+
+        FileWriter fileWriter = new FileWriter(file);
         PrintWriter printWriter = new PrintWriter(new BufferedWriter(fileWriter));
 
-        for(Entree entree: entreeList) {
-            printWriter.write(entree.toString());
+        List<LexiNode> allNodes = new ArrayList<>();
+        for (LexiNode node: nodeList) {
+            allNodes.addAll(node.getAllNodes());
+        }
+
+        for(LexiNode node: allNodes) {
+            printWriter.write(node.toString());
             printWriter.println();
         }
 
@@ -23,7 +32,7 @@ public class ReadWriteService {
         fileWriter.close();
     }
 
-    public List<LexiNode> readFromFile(File file) throws IOException {
+    public List<LexiNode> readFromFile(File file) throws Exception {
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
