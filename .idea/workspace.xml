@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a44c1345-1a4e-4bb3-8aff-bda3fc3624fa" name="Changes" comment="display">
+      <change afterPath="$PROJECT_DIR$/src/test/LexiNodeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Entree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/LexiNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/LexiNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/ReadWriteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ReadWriteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/swing/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/swing/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +39,23 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Driver">
+  <component name="RunManager" selected="Application.LexiNodeTest">
     <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Driver" />
       <module name="DICTIO" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LexiNodeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.LexiNodeTest" />
+      <module name="DICTIO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -66,6 +75,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LexiNodeTest" />
         <item itemvalue="Application.Driver" />
         <item itemvalue="Application.Window" />
       </list>
@@ -144,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670725611002</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="display">
+      <created>1670727333482</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670727333482</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
