@@ -12,6 +12,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe créant l'interface graphique
+ */
 public class Window {
 
     private ReadWriteService readWriteService;
@@ -38,12 +41,19 @@ public class Window {
 
     private JFileChooser jFileChooser;
 
+    /**
+     * Constructeur créant un nouveau tableau et initialisant l'interface graphique
+     * @param readWriteService
+     */
     public Window(ReadWriteService readWriteService) {
         this.readWriteService = readWriteService;
         this.nodeList = new ArrayList<>();
         initGUI();
     }
 
+    /**
+     * Méthode créant les différents éléments de l'interface graphique
+     */
     public void initGUI() {
         windowFrame = new JFrame("Dictio");
 
@@ -63,12 +73,17 @@ public class Window {
         wordField.setBounds(0, 40, 300, 40);
 
         wordField.getDocument().addDocumentListener(new DocumentListener() {
+            /**
+             * méthodes mettant à jour les éléments de l'interface graphique
+             * @param e
+             */
             @Override
             public void insertUpdate(DocumentEvent e) {
                 onWordFieldUpdate();
                 updateSuggestedWordsField();
                 updateDescriptionArea();
             }
+
 
             @Override
             public void removeUpdate(DocumentEvent e) {
@@ -115,6 +130,9 @@ public class Window {
         windowFrame.setVisible(true);
     }
 
+    /**
+     * méthode mettant à jour le champ de texte
+     */
     private void onWordFieldUpdate() {
         String currentWord = wordField.getText();
 
@@ -130,6 +148,9 @@ public class Window {
         currentNode = null;
     }
 
+    /**
+     * méthode ajoutant un mot et une définition à la liste des mots sans les ajoutant dans le fichier .txt
+     */
     private void onAddBtnClicked() {
         String currentWord = wordField.getText();
 
@@ -165,6 +186,9 @@ public class Window {
         }
     }
 
+    /**
+     * méthode permettant de charger un fichier .txt contenant un dictionnaire dans l'interface graphique
+     */
     private void onLoadBtnClicked() {
         int option = jFileChooser.showOpenDialog(windowFrame);
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -177,6 +201,9 @@ public class Window {
         }
     }
 
+    /**
+     * méthode permettant d'enregistrer les mots et les définitions ajoutez dns le fichier .txt
+     */
     private void onSaveBtnClicked() {
         int option = jFileChooser.showSaveDialog(windowFrame);
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -188,6 +215,9 @@ public class Window {
         }
     }
 
+    /**
+     * méthode mettant à jour la description du mots choisi
+     */
     private void updateDescriptionArea() {
         if (currentNode != null && currentNode.getDefinition() != null) {
             descField.setText(currentNode.getDefinition());
@@ -196,6 +226,9 @@ public class Window {
         }
     }
 
+    /**
+     * méthode mettant à jour la liste des mots suggérez en fonction des lettres tapé dans le champ de texte
+     */
     private void updateSuggestedWordsField() {
         if (currentNode != null) {
             suggestedWordsList.setListData(currentNode.getAllWords().toArray(new String[0]));
@@ -204,6 +237,9 @@ public class Window {
         }
     }
 
+    /**
+     * méthode mettant à jour la liste complète des mots avec les mots ajoutez
+     */
     private void updateAllWordsList() {
         List<String> allWords = new ArrayList<>();
         for (LexiNode node: nodeList) {

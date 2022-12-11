@@ -7,8 +7,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * permet de lire et d'écrire dans le fichier .txt
+ */
 public class ReadWriteService {
 
+    /**
+     * Méthode permettant d'écrire dans le fichier .txt
+     * @param file nom du fichier
+     * @param nodeList liste de node de la classe LexiNode
+     * @throws IOException exception si les paramètre sont null
+     */
     public void writeToFile(File file, List<LexiNode> nodeList) throws IOException {
         if (!file.getName().contains(".txt")){
             file = new File(file.getParent(), file.getName() + ".txt");
@@ -31,6 +40,12 @@ public class ReadWriteService {
         fileWriter.close();
     }
 
+    /**
+     * Méthode pour lire le fichier .txt
+     * @param file nom du fichier à lire
+     * @return une liste de node comprenant les mots et définitions contenu dans le fichier
+     * @throws Exception exception si les paramètre sont null
+     */
     public List<LexiNode> readFromFile(File file) throws Exception {
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);

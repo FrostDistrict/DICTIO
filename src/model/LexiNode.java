@@ -53,6 +53,11 @@ public class LexiNode {
         }
     }
 
+    /**
+     * Méthode permettant d'ajouter un node aux childNode
+     * @param node
+     * @throws WordAlreadyExistsException
+     */
     public void addNode(LexiNode node) throws WordAlreadyExistsException {
         if (word.equalsIgnoreCase(node.getWord())){
             throw new WordAlreadyExistsException(word);
