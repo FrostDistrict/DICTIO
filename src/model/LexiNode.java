@@ -56,7 +56,7 @@ public class LexiNode {
     /**
      * Méthode permettant d'ajouter un node aux childNode
      * @param node
-     * @throws WordAlreadyExistsException
+     * @throws WordAlreadyExistsException si le mot existe deja
      */
     public void addNode(LexiNode node) throws WordAlreadyExistsException {
         if (word.equalsIgnoreCase(node.getWord())){
@@ -79,6 +79,11 @@ public class LexiNode {
         }
     }
 
+    /**
+     * Methode recursive qui retourne tout les objets LexiNode se trouvant dans
+     * ses enfants.
+     * @return une liste de LexiNode qui ont une definition
+     */
     public List<LexiNode> getAllNodes() {
         List<LexiNode> nodes = new ArrayList<>();
 
@@ -93,6 +98,11 @@ public class LexiNode {
         return nodes;
     }
 
+    /**
+     * Methode qui retourne seulement les mots de classe et de ses enfants.
+     * Utile pour afficher les mots suggeree.
+     * @return liste de tout les mots
+     */
     public List<String> getAllWords() {
         List<String> allWords = new ArrayList<>();
 
@@ -106,6 +116,12 @@ public class LexiNode {
         return allWords;
     }
 
+    /**
+     * Methode qui parcours les noeuds de ses enfants afin de trouver
+     * le LexiNode correpondant au mot donne.
+     * @param word mot rechercher
+     * @return LexiNode retrouver ou null si aucun n'est trouver.
+     */
     public LexiNode getNodeByWord(String word) {
         if (this.word.equals(word)) {
             return this;

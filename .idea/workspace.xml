@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a44c1345-1a4e-4bb3-8aff-bda3fc3624fa" name="Changes" comment="display">
-      <change afterPath="$PROJECT_DIR$/src/test/LexiNodeTest.java" afterDir="false" />
+    <list default="true" id="a44c1345-1a4e-4bb3-8aff-bda3fc3624fa" name="Changes" comment="test unitaire">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/WordAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/WordAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/LexiNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/LexiNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/ReadWriteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ReadWriteService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670727333482</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="test unitaire">
+      <created>1670728776286</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670728776286</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +194,7 @@
     <MESSAGE value="LexiNode" />
     <MESSAGE value="fixed affichage" />
     <MESSAGE value="display" />
-    <option name="LAST_COMMIT_MESSAGE" value="display" />
+    <MESSAGE value="test unitaire" />
+    <option name="LAST_COMMIT_MESSAGE" value="test unitaire" />
   </component>
 </project>

@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Driver"},{"p":"model","l":"LexiNode"},{"p":"test","l":"LexiNodeTest"},{"p":"service","l":"ReadWriteService"},{"p":"swing","l":"Window"},{"p":"exception","l":"WordAlreadyExistsException"}];updateSearchResults();
